@@ -1,0 +1,16 @@
+services:
+  jupyter:
+    image: quay.io/jupyter/datascience-notebook:python-3.12
+    ports:
+      - "8888:8888"
+    volumes:
+      - jupyter_notebooks:/home/jovyan/work
+      - jupyter_data:/home/jovyan/.local
+      - ./datasets:/home/jovyan/datasets:ro
+      - ./examples:/home/jovyan/examples:ro
+    environment:
+      - JUPYTER_TOKEN=devops
+
+volumes:
+  jupyter_notebooks:
+  jupyter_data:
